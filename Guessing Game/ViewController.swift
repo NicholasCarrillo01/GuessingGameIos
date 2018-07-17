@@ -14,11 +14,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var gameStatLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
+    
+    var randomNumber: Int!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    gameStatLabel.text =
-        "we've changed the text!"
+    randomNumber = Int(arc4random_uniform(101)) //typecasting the UInt32 that arc4random_uniform() returns to an int
+        gameStatLabel.text = "\(randomNumber!)"
+        
     submitButton.setTitle("submit", for: .normal)
     resetButton.setTitle("reset", for: .normal)
     }
@@ -28,6 +33,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        gameStatLabel.text = "you tapped the reset button"
+    }
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        gameStatLabel.text = "you tapped this button"
+    }
+    
+    
 
 }
 
