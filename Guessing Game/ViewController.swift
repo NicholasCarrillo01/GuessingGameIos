@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     randomNumber = Int(arc4random_uniform(101)) //typecasting the UInt32 that arc4random_uniform() returns to an int
         gameStatLabel.text = "\(randomNumber!)"
-        
+        gameStatLabel.text = "good luck"
     submitButton.setTitle("submit", for: .normal)
     resetButton.setTitle("reset", for: .normal)
     }
@@ -34,11 +34,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func resetButtonTapped(_ sender: Any) {
-        gameStatLabel.text = "you tapped the reset button"
+        
+    
     }
     @IBAction func submitButtonTapped(_ sender: Any) {
-        gameStatLabel.text = "you tapped this button"
-    }
+        //this creates a  new constant by atempting to convert what the user has entered into the guesstextfield to an int. if it cant, we break out of the function
+        guard let userGuess = Int(guessTextfield.text!) else {
+            return
+        }
+        //check to make sure that the number the user put is between 0 and 100. break out ogf the function if it isnt
+        
+        if userGuess < 0 || userGuess > 100 {
+            return
+        }
+        if userGuess == randomNumber {
+            gameStatLabel.text = "Correct! you won!"
+        } else if userGuess < randomNumber {
+            gameStatLabel.text = "your guess was too low"
+        } else {
+            gameStatLabel.text = "your guess was to high"
+        }
+}
     
     
 
