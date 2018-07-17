@@ -10,9 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var guessTextfield: UITextField!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var gameStatLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    gameStatLabel.text =
+        "we've changed the text!"
+    submitButton.setTitle("submit", for: .normal)
+    resetButton.setTitle("reset", for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
